@@ -222,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &58382243
 Animator:
   serializedVersion: 5
@@ -253,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 58382242}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.78, y: 1.2, z: 0.05212507}
+  m_LocalPosition: {x: -8.01, y: 1.2, z: 0.05212507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1977,7 +1977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &629749843
 Animator:
   serializedVersion: 5
@@ -2008,8 +2008,8 @@ Transform:
   m_GameObject: {fileID: 629749842}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -12.37, y: 0.23, z: -0.028668106}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -12.21, y: -0.08, z: -0.023977}
+  m_LocalScale: {x: 0.83029, y: 0.83029, z: 0.83029}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1123371394}
@@ -3084,7 +3084,7 @@ Transform:
   m_GameObject: {fileID: 1006188082}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.899422, y: -2.04, z: 0.03423148}
+  m_LocalPosition: {x: -3.1294222, y: -2.04, z: 0.03423148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3545,7 +3545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1141221070
 Animator:
   serializedVersion: 5
@@ -3576,8 +3576,8 @@ Transform:
   m_GameObject: {fileID: 1141221069}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.34, y: -3.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -18.4, y: -2.98, z: -0.0025341}
+  m_LocalScale: {x: 0.82322, y: 0.82322, z: 0.82322}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 235623030}
