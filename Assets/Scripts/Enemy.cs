@@ -6,8 +6,11 @@ public class Enemy : MonoBehaviour
 {
     public float moveSpeed = 3f;
     public int health = 3;
+    public int damage = 1; // Damage the enemy deals to the player
 
     private Transform player;
+
+    int expAmount = 100;
 
     private void Start()
     {
@@ -39,15 +42,12 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy died!");
+        expmanager.instance.AddExp(expAmount);
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Enemy hit the player!");
-            // Add damage to player or other logic
-        }
+        
     }
 }
