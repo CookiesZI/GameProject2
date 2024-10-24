@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb5439fd1303ab42b814d0cc9d6b5b3, type: 3}
+  m_Name: Bow 2
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 274899396317075714, guid: 56b5e67b3caee034aae561b29e1a7573, type: 3}
+  damage: 10
+  speed: 4
+  cooldownDuration: 2.8
+  pierce: 0
+  level: 2
+  nextLevelPrefab: {fileID: 0}

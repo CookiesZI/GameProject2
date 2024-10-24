@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4966505229444961875}
   - component: {fileID: 2983432398334942687}
   - component: {fileID: 4249192084521876978}
-  - component: {fileID: 2240623701838210811}
   - component: {fileID: 1474621356435501810}
+  - component: {fileID: 2258086865856332496}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -122,19 +122,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &2240623701838210811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7503314817626058472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e19935bfc48f35408e99109e3c9dd15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!50 &1474621356435501810
 Rigidbody2D:
   serializedVersion: 4
@@ -143,7 +130,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7503314817626058472}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -161,4 +148,18 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &2258086865856332496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7503314817626058472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20995337a810ac845bd047fd4574424c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 5129f807454de274bb0ad8ce0940f015, type: 2}
+  destroyAfterSeconds: 3

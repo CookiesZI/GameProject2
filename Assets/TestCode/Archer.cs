@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[CreateAssetMenu]
 public class Archer : Ability
 {
     public GameObject bulletPrefab;  // Prefab for the bullet
