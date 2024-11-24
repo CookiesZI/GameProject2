@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 250
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,7 +95,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Play Button
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 3263
+        width: 2629
+        height: 493
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 746d0fc9cfd839e47944dc06b82b3f49
+      internalID: 1449764663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: resume Button
+      rect:
+        serializedVersion: 2
+        x: 1743
+        y: 2580
+        width: 2626
+        height: 492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a7862410b142e842a2d0f6096bce479
+      internalID: -1660897189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: option Button
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 1849
+        width: 2626
+        height: 492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6181748109dc1a49bc2e0dd6c986b3c
+      internalID: 667359148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mainmenu Button
+      rect:
+        serializedVersion: 2
+        x: 1671
+        y: 1146
+        width: 2626
+        height: 497
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f5c3792fd8cda24680e69a465cf2dac
+      internalID: -428583881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quixt Button
+      rect:
+        serializedVersion: 2
+        x: 1603
+        y: 387
+        width: 2626
+        height: 491
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229c5b147fec6cd45b7c08b93327dcdc
+      internalID: 1760621599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +211,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Icon optional_10: -206202286
+      Icon optional_12: -1367333322
+      Icon optional_13: -978023428
+      Icon optional_14: 116348792
+      Icon optional_15: -1978460948
+      Icon optional_2: 931875567
+      Icon optional_3: -296820790
+      Icon optional_5: 587088832
+      Icon optional_7: -572281687
+      Icon optional_8: 931456706
+      Icon optional_9: -1022984340
+      Mainmenu Button: -428583881
+      Play Button: 1449764663
+      Quixt Button: 1760621599
+      option Button: 667359148
+      resume Button: -1660897189
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
