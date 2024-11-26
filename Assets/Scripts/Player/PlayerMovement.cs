@@ -19,10 +19,11 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public Vector2 lastMove;
 
-    public CharacterScriptableObject characterData;
+    PlayerStats player;
 
     public void Start()
     {
+        player = GetComponent<PlayerStats>();
         rb = GetComponent<Rigidbody2D>();
         ab = GetComponent<Animator>();
         lastMove = new Vector2 (1, 0f);
@@ -73,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = new Vector2(moveDirection.x * characterData.MoveSpeed, moveDirection.y * characterData.MoveSpeed);
+        rb.velocity = new Vector2(moveDirection.x * player.currentMoveSpeed, moveDirection.y * player.currentMoveSpeed);
     }
 
     private void FlipController()

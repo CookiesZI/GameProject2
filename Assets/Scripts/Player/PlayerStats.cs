@@ -6,11 +6,16 @@ public class PlayerStats : MonoBehaviour
 {
     public CharacterScriptableObject characterData;
 
-    float currentHealth;
-    float currentRecovery;
-    float currentMoveSpeed;
-    float currentMight;
-    float currentProjectileSpeed;
+    [HideInInspector]
+    public float currentHealth;
+    [HideInInspector]
+    public float currentRecovery;
+    [HideInInspector]
+    public float currentMoveSpeed;
+    [HideInInspector]
+    public float currentMight;
+    [HideInInspector]
+    public float currentProjectileSpeed;
 
     [Header("Experience/level")]
     public int experience = 0;
@@ -34,8 +39,9 @@ public class PlayerStats : MonoBehaviour
 
     InventoryManager inventory;
     public int weaponIndex;
+    public int passiveItemIndex;
 
-    public GameObject secondWeapon;
+    [SerializeField] Timer timer;
 
     void Awake()
     {
@@ -48,7 +54,6 @@ public class PlayerStats : MonoBehaviour
         currentProjectileSpeed = characterData.ProjectileSpeed;
 
         SpawnWeapon(characterData.StartingWeapon);
-        SpawnWeapon(secondWeapon);
     }
 
 
@@ -113,6 +118,7 @@ public class PlayerStats : MonoBehaviour
     public void Kill()
     {
         Debug.Log("PLAYER IS DEAD");
+        timer.StopTimer();
     }
 
     public void RestoreHealth(float amount)
