@@ -51,6 +51,11 @@ public class PlayerMovement : MonoBehaviour
 
     void InputManagement()
     {
+        if(GameManager.instance.isGameOver)
+        {
+            return;
+        }
+
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
 
@@ -74,7 +79,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = new Vector2(moveDirection.x * player.currentMoveSpeed, moveDirection.y * player.currentMoveSpeed);
+        if (GameManager.instance.isGameOver)
+        {
+            return;
+        }
+
+        rb.velocity = new Vector2(moveDirection.x * player.CurrentMoveSpeed, moveDirection.y * player.CurrentMoveSpeed);
     }
 
     private void FlipController()

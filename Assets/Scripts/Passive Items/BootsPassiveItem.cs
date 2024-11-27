@@ -6,6 +6,6 @@ public class BootsPassiveItem : PassiveItem
 {
     protected override void ApplyModifiler()
     {
-        player.currentMoveSpeed *= 1 + passiveItemData.Multiplier / 100f;
+        player.CurrentMoveSpeed *= 1 + passiveItemData.Multiplier / 100f;
     }
 }

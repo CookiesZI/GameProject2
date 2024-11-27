@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 7574039162298339504}
   - component: {fileID: 6848454047115659336}
   - component: {fileID: 1173644930077712483}
+  - component: {fileID: 2791967444350195396}
   m_Layer: 0
   m_Name: BatAll
   m_TagString: Enemy
@@ -411,7 +412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c11adbd51babb479747043ba70b69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: e353557438554ce4bb505976af5d9cee, type: 2}
 --- !u!114 &-2577277132891570009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +425,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: e353557438554ce4bb505976af5d9cee, type: 2}
+  currentMoveSpeed: 0
+  currentHealth: 0
+  currentDamage: 0
+  despawnDistance: 20
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  danmageFlashDuration: 0.2
+  deathFadeTime: 0.6
 --- !u!61 &7574039162298339504
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -485,13 +492,13 @@ MonoBehaviour:
   drops:
   - name: Exp(S)
     itemPrefab: {fileID: 87748709339580049, guid: c423aebaba3c4cf4b8d95cfd120524b9, type: 3}
-    dropRate: 80
+    dropRate: 60
   - name: Exp(M)
     itemPrefab: {fileID: 7863297435024633936, guid: d6914bf6afc4c344a8ef9efebaac8d35, type: 3}
-    dropRate: 40
+    dropRate: 30
   - name: Exp(L)
     itemPrefab: {fileID: 6425369379864710351, guid: 3b16f462417cc924eb4c8f12138ffd48, type: 3}
-    dropRate: 15
+    dropRate: 5
   - name: Coin
     itemPrefab: {fileID: 4572222658890982075, guid: e11ba06c6d795b1488924da927a6f8d7, type: 3}
     dropRate: 60
@@ -522,6 +529,58 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!212 &2791967444350195396
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220733026097246257}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1942076449364725598
 GameObject:
   m_ObjectHideFlags: 0
