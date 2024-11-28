@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5262205275435155985}
   - component: {fileID: 3677663788729823727}
   - component: {fileID: 7144602354290430147}
+  - component: {fileID: 2553894903463543173}
   m_Layer: 0
   m_Name: Exp(M)
   m_TagString: Untagged
@@ -133,4 +134,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c4b9d4aa0fa0b458f34a2e82e95fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasbeenCollected: 0
   experienceGranted: 200
+--- !u!50 &2553894903463543173
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863297435024633936}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

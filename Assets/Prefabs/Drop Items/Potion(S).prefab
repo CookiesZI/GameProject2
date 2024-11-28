@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6942731526178521484}
   - component: {fileID: 4400611736713090283}
   - component: {fileID: 939849919987150345}
+  - component: {fileID: -3335058991179126521}
   m_Layer: 0
   m_Name: Potion(S)
   m_TagString: Untagged
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 769e452488804a14b8c8dbd74ff4079a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasbeenCollected: 0
   healthToRestore: 2
 --- !u!70 &939849919987150345
 CapsuleCollider2D:
@@ -134,3 +136,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 5.41, y: 7.32}
   m_Direction: 0
+--- !u!50 &-3335058991179126521
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718648813549344721}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
