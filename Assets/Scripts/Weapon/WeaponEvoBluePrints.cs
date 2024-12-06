@@ -4,7 +4,7 @@ using UnityEngine;
 public class WeaponEvoBluePrints : ScriptableObject
 {
     public WeaponScriptableObject baseWeaponData;
-    public WeaponScriptableObject secondBaseWeaponData;
+    public PassiveItemScriptable passiveItemData;
     public WeaponScriptableObject evolvedWeaponData;
     public GameObject evolvedWeapon;
 }

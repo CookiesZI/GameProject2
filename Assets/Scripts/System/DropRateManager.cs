@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class DropRateManager : MonoBehaviour
 {
-    [System.Serializable]
+    [System.Serializable]   //Serialize the class
     public class Drops
     {
         public string name;
         public GameObject itemPrefab;
         public float dropRate;
     }
-
+    public bool active = false;
     public List<Drops> drops;
 
     void OnDestroy()
     {
-        if (!gameObject.scene.isLoaded)
+        if (!active) return;
+        if (!gameObject.scene.isLoaded) //Stops the spawning error from appearing when stopping play mode
         {
             return;
         }
@@ -31,6 +32,7 @@ public class DropRateManager : MonoBehaviour
                 possibleDrops.Add(rate);
             }
         }
+        //Check if there are possible drops
         if (possibleDrops.Count > 0)
         {
             Drops drops = possibleDrops[UnityEngine.Random.Range(0, possibleDrops.Count)];

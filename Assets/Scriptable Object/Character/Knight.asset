@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85f908bcaa0570499e13ede973c08f9, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 0}
+  startingWeapon: {fileID: 6380004154323008146, guid: fd62a498347021d4db4fe006495c6f86, type: 3}
   maxHealth: 50
   recovery: 0.25
-  moveSpeed: 5
+  moveSpeed: 8
   might: 3
   projectileSpeed: 1
   magnet: 16

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe3fd07fe2785a48a238d68fab5404a, type: 3}
+  m_Name: Power Ring 2
+  m_EditorClassIdentifier: 
+  multipler: 0.5
+  level: 2
+  nextLevelPrefab: {fileID: 8034772114052846932, guid: 3bcaa727d9826374c96400052ae2c902, type: 3}
+  name: Power Ring
+  description: Increase Multipler 0.5
+  icon: {fileID: 21300000, guid: 0d58a5fc04e24e84ebbc2260d4877b7d, type: 3}

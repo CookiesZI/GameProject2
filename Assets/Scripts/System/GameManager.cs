@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    // Define the different states of the game
     public enum GameState
     {
         Gameplay,
@@ -16,11 +18,13 @@ public class GameManager : MonoBehaviour
         LevelUp
     }
 
+    // Store the current state of the game
     public GameState currentState;
 
+    // Store the previous state of the game before it was paused
     public GameState previousState;
 
-    [Header("Damage Text Setting")]
+    [Header("Damage Text Settings")]
     public Canvas damageTextCanvas;
     public float textFontSize = 20;
     public TMP_FontAsset textFont;
@@ -28,29 +32,43 @@ public class GameManager : MonoBehaviour
 
     [Header("Screens")]
     public GameObject pauseScreen;
-    public GameObject resultScreen;
+    public GameObject resultsScreen;
     public GameObject levelUpScreen;
+    public GameObject gameoverScreen;
 
-    [Header("StopWatch")]
-    public float timerLitmit;
-    float stopWatchTime;
-    public TextMeshProUGUI StopWatchDisplay;
+    [Header("Results Screen Displays")]
+    public Image chosenCharacterImage;
+    public TMP_Text chosenCharacterName;
+    public TMP_Text levelReachedDisplay;
+    public TMP_Text timeSurvivedDisplay;
+    public List<Image> chosenWeaponsUI = new List<Image>(6);
+    public List<Image> chosenPassiveItemsUI = new List<Image>(6);
 
+    [Header("Stopwatch")]
+    public float timeLimit; // The time limit in seconds
+    float stopwatchTime; // The current time elapsed since the stopwatch started
+    public TMP_Text stopwatchDisplay;
+
+    // Flag to check if the game is over
     public bool isGameOver = false;
 
+    // Flag to check if the player is choosing their upgrades
     public bool choosingUpgrade = false;
 
+    // Reference to the player's game object
     public GameObject playerObject;
 
     void Awake()
     {
+        //Warning check to see if there is another singleton of this kind already in the game
         if (instance == null)
         {
             instance = this;
         }
         else
         {
-            Debug.LogWarning("EXTRA" + this + "DELETED");
+            Debug.LogWarning("EXTRA " + this + " DELETED");
+            Destroy(gameObject);
         }
 
         DisableScreens();
@@ -58,45 +76,46 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        // Define the behavior for each state
         switch (currentState)
         {
             case GameState.Gameplay:
+                // Code for the gameplay state
                 CheckForPauseAndResume();
-                UpdateStopWatch();
+                UpdateStopwatch();
                 break;
-
             case GameState.Paused:
+                // Code for the paused state
                 CheckForPauseAndResume();
                 break;
-
             case GameState.GameOver:
+                // Code for the game over state
                 if (!isGameOver)
                 {
                     isGameOver = true;
-                    Time.timeScale = 0f;
-                    Debug.Log("GAME IS OVER");
-                    DisplayResults();
+                    Time.timeScale = 0f; //Stop the game entirely
+                    Debug.Log("Game is over");
+                    DisplayGameOver();
                 }
                 break;
-
             case GameState.LevelUp:
                 if (!choosingUpgrade)
                 {
                     choosingUpgrade = true;
-                    Time.timeScale = 0f;
-                    Debug.Log("Upgrades Show");
+                    Time.timeScale = 0f; //Pause the game for now
+                    Debug.Log("Upgrades shown");
                     levelUpScreen.SetActive(true);
                 }
                 break;
-                
             default:
                 Debug.LogWarning("STATE DOES NOT EXIST");
                 break;
         }
     }
 
-    IEnumerator GenerateFloatingTextCourtine(string text, Transform target, float duration = 1f, float speed = 50f)
+    IEnumerator GenerateFloatingTextCoroutine(string text, Transform target, float duration = 1f, float speed = 1f)
     {
+        // Start generating the floating text.
         GameObject textObj = new GameObject("Damage Floating Text");
         RectTransform rect = textObj.AddComponent<RectTransform>();
         TextMeshProUGUI tmPro = textObj.AddComponent<TextMeshProUGUI>();
@@ -104,23 +123,29 @@ public class GameManager : MonoBehaviour
         tmPro.horizontalAlignment = HorizontalAlignmentOptions.Center;
         tmPro.verticalAlignment = VerticalAlignmentOptions.Middle;
         tmPro.fontSize = textFontSize;
-        if(textFont) tmPro.font = textFont;
+        if (textFont) tmPro.font = textFont;
         rect.position = referenceCamera.WorldToScreenPoint(target.position);
 
+        // Makes sure this is destroyed after the duration finishes.
         Destroy(textObj, duration);
 
+        // Parent the generated text object to the canvas.
         textObj.transform.SetParent(instance.damageTextCanvas.transform);
 
+        // Pan the text upwards and fade it away over time.
         WaitForEndOfFrame w = new WaitForEndOfFrame();
         float t = 0;
         float yOffset = 0;
-        while(t < duration)
+        while (t < duration)
         {
+            // Wait for a frame and update the time.
             yield return w;
             t += Time.deltaTime;
 
+            // Fade the text to the right alpha value.
             tmPro.color = new Color(tmPro.color.r, tmPro.color.g, tmPro.color.b, 1 - t / duration);
 
+            // Pan the text upwards.
             yOffset += speed * Time.deltaTime;
             rect.position = referenceCamera.WorldToScreenPoint(target.position + new Vector3(0, yOffset));
         }
@@ -128,45 +153,54 @@ public class GameManager : MonoBehaviour
 
     public static void GenerateFloatingText(string text, Transform target, float duration = 1f, float speed = 1f)
     {
-        if(!instance.damageTextCanvas) return;
+        // If the canvas is not set, end the function so we don't
+        // generate any floating text.
+        if (!instance.damageTextCanvas) return;
 
+        // Find a relevant camera that we can use to convert the world
+        // position to a screen position.
         if (!instance.referenceCamera) instance.referenceCamera = Camera.main;
 
-        instance.StartCoroutine(instance.GenerateFloatingTextCourtine(text, target, duration, speed));
+        instance.StartCoroutine(instance.GenerateFloatingTextCoroutine(
+            text, target, duration, speed
+        ));
     }
 
-    public void ChangeState(GameState newstate)
+    // Define the method to change the state of the game
+    public void ChangeState(GameState newState)
     {
-        currentState = newstate;
+        currentState = newState;
     }
 
     public void PauseGame()
     {
-        if(currentState != GameState.Paused)
+        if (currentState != GameState.Paused)
         {
+            previousState = currentState;
             ChangeState(GameState.Paused);
-            Time.timeScale = 0f;
-            pauseScreen.SetActive(true);
-            Debug.Log("Game is Pause");
+            Time.timeScale = 0f; // Stop the game
+            pauseScreen.SetActive(true); // Enable the pause screen
+            Debug.Log("Game is paused");
         }
     }
 
     public void ResumeGame()
     {
-        if(currentState == GameState.Paused)
+        if (currentState == GameState.Paused)
         {
             ChangeState(previousState);
-            Time.timeScale = 1f;
-            pauseScreen.SetActive(false);
-            Debug.Log("Game is Resume");
+            Time.timeScale = 1f; // Resume the game
+            pauseScreen.SetActive(false); //Disable the pause screen
+            Debug.Log("Game is resumed");
         }
     }
 
+    // Define the method to check for pause and resume input
     void CheckForPauseAndResume()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(currentState == GameState.Paused)
+            if (currentState == GameState.Paused)
             {
                 ResumeGame();
             }
@@ -180,37 +214,100 @@ public class GameManager : MonoBehaviour
     void DisableScreens()
     {
         pauseScreen.SetActive(false);
-        resultScreen.SetActive(false);
+        resultsScreen.SetActive(false);
         levelUpScreen.SetActive(false);
     }
 
     public void GameOver()
     {
+        timeSurvivedDisplay.text = stopwatchDisplay.text;
         ChangeState(GameState.GameOver);
     }
 
     void DisplayResults()
     {
-        resultScreen.SetActive(true);
+        resultsScreen.SetActive(true);
     }
 
-    void UpdateStopWatch()
+    void DisplayGameOver()
     {
-        stopWatchTime += Time.deltaTime;
+        gameoverScreen.SetActive(true);
+    }
 
-        UpdatesStopWatchDisplay();
+    public void AssignLevelReachedUI(int levelReachedData)
+    {
+        levelReachedDisplay.text = levelReachedData.ToString();
+    }
 
-        if(stopWatchTime >= timerLitmit)
+    public void AssignTimerUI(int timerData)
+    {
+        timeSurvivedDisplay.text = timerData.ToString();
+    }
+
+    public void AssignChosenWeaponsAndPassiveItemsUI(List<Image> chosenWeaponsData, List<Image> chosenPassiveItemsData)
+    {
+        // Check that both lists have the same length
+        if (chosenWeaponsData.Count != chosenWeaponsUI.Count || chosenPassiveItemsData.Count != chosenPassiveItemsUI.Count)
         {
-            GameOver();
+            Debug.LogError("Chosen weapons and passive items data lists have different lengths");
+            return;
+        }
+
+        // Assign chosen weapons data to chosenWeaponsUI
+        for (int i = 0; i < chosenWeaponsUI.Count; i++)
+        {
+            // Check that the sprite of the corresponding element in chosenWeaponsData is not null
+            if (chosenWeaponsData[i].sprite)
+            {
+                // Enable the corresponding element in chosenWeaponsUI and set its sprite to the corresponding sprite in chosenWeaponsData
+                chosenWeaponsUI[i].enabled = true;
+                chosenWeaponsUI[i].sprite = chosenWeaponsData[i].sprite;
+            }
+            else
+            {
+                // If the sprite is null, disable the corresponding element in chosenWeaponsUI
+                chosenWeaponsUI[i].enabled = false;
+            }
+        }
+
+        // Assign chosen passive items data to chosenPassiveItemsUI
+        for (int i = 0; i < chosenPassiveItemsUI.Count; i++)
+        {
+            // Check that the sprite of the corresponding element in chosenPassiveItemsData is not null
+            if (chosenPassiveItemsData[i].sprite)
+            {
+                // Enable the corresponding element in chosenPassiveItemsUI and set its sprite to the corresponding sprite in chosenPassiveItemsData
+                chosenPassiveItemsUI[i].enabled = true;
+                chosenPassiveItemsUI[i].sprite = chosenPassiveItemsData[i].sprite;
+            }
+            else
+            {
+                // If the sprite is null, disable the corresponding element in chosenPassiveItemsUI
+                chosenPassiveItemsUI[i].enabled = false;
+            }
         }
     }
 
-    void UpdatesStopWatchDisplay()
+    void UpdateStopwatch()
     {
-        int minutes = Mathf.FloorToInt(stopWatchTime / 60);
-        int seconds = Mathf.FloorToInt(stopWatchTime % 60);
-        StopWatchDisplay.text = string.Format("{00:00}:{1:00}", minutes, seconds);
+        stopwatchTime += Time.deltaTime;
+
+        UpdateStopwatchDisplay();
+
+        if (stopwatchTime >= timeLimit)
+        {
+            playerObject.SendMessage("Kill");
+        }
+    }
+
+    void UpdateStopwatchDisplay()
+    {
+        // Calculate the number of minutes and seconds that have elapsed
+        int minutes = Mathf.FloorToInt(stopwatchTime / 60);
+        int seconds = Mathf.FloorToInt(stopwatchTime % 60);
+
+        // Update the stopwatch text to display the elapsed time
+        stopwatchDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void StartLevelUp()
@@ -222,8 +319,8 @@ public class GameManager : MonoBehaviour
     public void EndLevelUp()
     {
         choosingUpgrade = false;
-        Time.timeScale = 1f;
-        levelUpScreen.SetActive(true);
+        Time.timeScale = 1f;    //Resume the game
+        levelUpScreen.SetActive(false);
         ChangeState(GameState.Gameplay);
     }
 }

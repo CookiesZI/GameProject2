@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb5439fd1303ab42b814d0cc9d6b5b3, type: 3}
+  m_Name: Reaper
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6940211651559773132, guid: 45aee9b2eabc6444e9a74a8c129a95ba, type: 3}
+  damage: 50
+  speed: 40
+  cooldownDuration: 1.5
+  pierce: 1
+  level: 1
+  nextLevelPrefab: {fileID: 0}
+  name: Reaper
+  description: 
+  icon: {fileID: 21300000, guid: 64ce78c9a2935e94ca7d6a49ad4152cf, type: 3}
+  evolvedUpgradeToRemove: 0

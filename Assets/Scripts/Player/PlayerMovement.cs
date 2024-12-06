@@ -27,6 +27,19 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ab = GetComponent<Animator>();
         lastMove = new Vector2 (1, 0f);
+
+        if (player == null)
+        {
+            Debug.LogError("PlayerStats component is missing!");
+        }
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody2D component is missing!");
+        }
+        if (ab == null)
+        {
+            Debug.LogError("Animator component is missing!");
+        }
     }
 
     private void Update()

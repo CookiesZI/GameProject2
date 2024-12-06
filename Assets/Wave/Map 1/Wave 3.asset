@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636d35ff1d6fb6a4ebc1c806b268d7e5, type: 3}
+  m_Name: Wave 3
+  m_EditorClassIdentifier: 
+  possibleSpawnPrefabs:
+  - {fileID: 2807056162970606384, guid: ca2c86cca7d5df645becccb7ea1c42c5, type: 3}
+  - {fileID: 8449887274188119966, guid: 893d06b43d982f24eb2b14c2131577c3, type: 3}
+  - {fileID: 2492938213243578035, guid: ac12ae2507bb8de4ab2b2172eb8563ec, type: 3}
+  spawnInterval: {x: 5, y: 10}
+  spawnsPerTick: {x: 2, y: 3}
+  duration: 480
+  startingCount: 15
+  totalSpawns: 4294967295
+  exitConditions: 1
+  mustKillAll: 1
+  spawnCount: 0

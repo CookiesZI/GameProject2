@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasbeenCollected: 0
-  healthToRestore: 5
+  healthToRestore: 30
 --- !u!70 &4037571003473023185
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

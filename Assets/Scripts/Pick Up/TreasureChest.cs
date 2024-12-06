@@ -22,13 +22,13 @@ public class TreasureChest : MonoBehaviour
 
     public void OpenTreasureChest()
     {
-        if(inventory.GetPossibleEvolution().Count <= 0)
+        if(inventory.GetPossibleEvolutions().Count <= 0)
         {
             Debug.LogWarning("No Available Evo");
             return;
         }
 
-        WeaponEvoBluePrints toEvolve = inventory.GetPossibleEvolution()[Random.Range(0, inventory.GetPossibleEvolution().Count)];
+        WeaponEvoBluePrints toEvolve = inventory.GetPossibleEvolutions()[Random.Range(0, inventory.GetPossibleEvolutions().Count)];
         inventory.EvolveWeapon(toEvolve);
     }
 }

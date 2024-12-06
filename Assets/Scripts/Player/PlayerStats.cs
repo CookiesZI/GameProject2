@@ -120,8 +120,6 @@ public class PlayerStats : MonoBehaviour
 
     void Awake()
     {
-        characterData = CharacterSelector.GetData();
-
         inventory = GetComponent<InventoryManager>();
 
         CurrentHealth = characterData.MaxHealth;
@@ -217,13 +215,14 @@ public class PlayerStats : MonoBehaviour
 
     void UpdateHealthBar()
     {
-        healthBar.fillAmount = currentHealth / characterData.MaxHealth;
+        healthBar.fillAmount = CurrentHealth / characterData.MaxHealth;
     }
 
     public void Kill()
     {
         if (!GameManager.instance.isGameOver)
         {
+
             GameManager.instance.GameOver();
         }
     }
